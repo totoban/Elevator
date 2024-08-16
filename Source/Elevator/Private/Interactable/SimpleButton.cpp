@@ -2,6 +2,7 @@
 
 
 #include "Interactable/SimpleButton.h"
+#include "Components/BoxComponent.h"
 
 // Sets default values
 ASimpleButton::ASimpleButton()
@@ -15,6 +16,9 @@ ASimpleButton::ASimpleButton()
 
 	ButtonMesh = CreateDefaultSubobject<UStaticMeshComponent>("Button");
 	ButtonMesh->SetupAttachment(SceneComponent); 
+
+	BoxCollision = CreateDefaultSubobject<UBoxComponent>("Box Collision");
+	BoxCollision->SetupAttachment(ButtonMesh);
 	
 	
 

@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "SimpleButton.generated.h"
 
+class UBoxComponent;
+
 UCLASS()
 class ELEVATOR_API ASimpleButton : public AActor
 {
@@ -25,7 +27,13 @@ protected:
 
 	TObjectPtr<USceneComponent> SceneComponent;
 	UPROPERTY(EditAnywhere)
-	TObjectPtr<UStaticMeshComponent> ButtonMesh;
+	TObjectPtr<UStaticMeshComponent> ButtonMesh; 
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UBoxComponent> BoxCollision;
+
+	
+
+
 
 	
 
