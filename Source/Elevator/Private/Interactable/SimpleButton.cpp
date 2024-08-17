@@ -20,10 +20,6 @@ ASimpleButton::ASimpleButton()
 	BoxCollision = CreateDefaultSubobject<UBoxComponent>("Box Collision");
 	BoxCollision->SetupAttachment(ButtonMesh);
 	
-	
-
-	
-
 }
 
 // Called when the game starts or when spawned
