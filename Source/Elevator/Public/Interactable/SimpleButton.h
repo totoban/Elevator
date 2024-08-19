@@ -30,18 +30,18 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-
+	//Button Component Start
 	TObjectPtr<USceneComponent> SceneComponent;
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UStaticMeshComponent> ButtonMesh; 
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UBoxComponent> BoxCollision;
+	//ButtonComponent End
 
+	//Button Fonctionnalité
+	bool bIsButtonActive = false;
 	
 
-
-
-	
 
 private:
 

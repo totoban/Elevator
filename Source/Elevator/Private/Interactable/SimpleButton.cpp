@@ -3,6 +3,7 @@
 
 #include "Interactable/SimpleButton.h"
 #include "Components/BoxComponent.h"
+#include "Elevator/ElevatorProjectile.h"
 
 // Sets default values
 ASimpleButton::ASimpleButton()
@@ -25,18 +26,30 @@ ASimpleButton::ASimpleButton()
 	
 }
 
-void ASimpleButton::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	UE_LOG(LogTemp, Warning, TEXT("OVERLAP BEGIN"))
-}
-
-// Called when the game starts or when spawned
 void ASimpleButton::BeginPlay()
 {
 	Super::BeginPlay();
 	
 	
+
 }
+
+void ASimpleButton::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	AElevatorProjectile* ProjectileRef = Cast<AElevatorProjectile>(OtherActor);
+	if (!bIsButtonActive && OtherActor == ProjectileRef)
+	{
+		bIsButtonActive = true;
+		UMaterialInterface* RedMat = ButtonMesh->GetMaterial(2);
+		ButtonMesh->SetMaterial(0, RedMat);
+		
+		
+	}
+
+	
+}
+
+
 
 // Called every frame
 void ASimpleButton::Tick(float DeltaTime)
