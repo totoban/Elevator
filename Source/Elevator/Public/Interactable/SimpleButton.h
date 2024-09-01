@@ -31,16 +31,19 @@ protected:
 	virtual void BeginPlay() override;
 
 	//Button Component Start
-	TObjectPtr<USceneComponent> SceneComponent;
+	TObjectPtr<USceneComponent> SceneComponent = nullptr;
 	UPROPERTY(EditAnywhere)
-	TObjectPtr<UStaticMeshComponent> ButtonMesh; 
+	TObjectPtr<UStaticMeshComponent> ButtonMesh = nullptr; 
 	UPROPERTY(EditAnywhere)
-	TObjectPtr<UBoxComponent> BoxCollision;
+	TObjectPtr<UBoxComponent> BoxCollision = nullptr;
 	//ButtonComponent End
 
 	//Button Fonctionnalité
 	bool bIsButtonActive = false;
-	
+	FVector InitialButtonPosition = FVector::ZeroVector;
+	FVector EndButtonPosition = FVector::ZeroVector;
+	UPROPERTY(EditAnywhere)
+	float ButtonZDistance = -15.f;
 
 
 private:

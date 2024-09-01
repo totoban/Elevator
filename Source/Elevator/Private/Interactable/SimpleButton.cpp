@@ -29,21 +29,20 @@ ASimpleButton::ASimpleButton()
 void ASimpleButton::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	InitialButtonPosition = ButtonMesh->GetRelativeLocation();
+	EndButtonPosition = InitialButtonPosition + FVector(0.f, 0.f, ButtonZDistance);
 	
 
 }
 
 void ASimpleButton::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	AElevatorProjectile* ProjectileRef = Cast<AElevatorProjectile>(OtherActor);
+	TObjectPtr<AElevatorProjectile> ProjectileRef = Cast<AElevatorProjectile>(OtherActor);
 	if (!bIsButtonActive && OtherActor == ProjectileRef)
 	{
 		bIsButtonActive = true;
-		UMaterialInterface* RedMat = ButtonMesh->GetMaterial(2);
-		ButtonMesh->SetMaterial(0, RedMat);
-		
-		
+		ButtonMesh->SetMaterial(0, ButtonMesh->GetMaterial(2));
+		ButtonMesh->SetRelativeLocation(EndButtonPosition);
 	}
 
 	
